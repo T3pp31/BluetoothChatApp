@@ -44,6 +44,7 @@ window = sg.Window("Bluetoothファイル送受信", layout)
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == "exit":
+        window.close()
         break
 
     elif event == "search":
@@ -52,11 +53,15 @@ while True:
         print(devices)
 
     elif event == "send":
-        data = send(values["send_addr"], values["message"])
+        loop = asyncio.get_event_loop()
+        data = loop.run_until_complete(
+            send(values["send_addr"], values["message"])
+        )
         print(data)
 
     elif event == "receive":
-        data = receive(values["receive_addr"], values["chanel"])
+        loop = asyncio.get_event_loop()
+        data = loop.run_until_complete(
+            receive(values["receive_addr"], values["channel"])
+        )
         print(data)
-
-window.close()
