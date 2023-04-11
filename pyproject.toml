@@ -6,9 +6,9 @@ authors = ["Fu-Te <37261985+T3pp31@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
-bleak = "^0.20.1"
+python = "^3.9"
 pysimplegui = "^4.60.4"
+bleak = "^0.20.1"
 
 
 [build-system]

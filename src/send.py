@@ -16,4 +16,4 @@ def send(addr, message):
 
     s.send(message.encode())
     data = s.recv(1024).decode()
-    print(f"受信したメッセージ:{data}")
+    return data

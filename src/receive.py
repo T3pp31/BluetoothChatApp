@@ -21,7 +21,6 @@ def receive(addr, channel):
     print(f"{addr}からのコネクトを許可")
 
     data = s_sock.recv(1024)
-    print(f"受信:{data}")
 
     s.close()
     return data
