@@ -10,7 +10,7 @@ def send(addr, message):
     message: message 送信したいメッセージ
     """
     s = socket.socket(
-        socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTRPROTO_RFCOMM
+        socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM
     )
     s.connect(addr)
 

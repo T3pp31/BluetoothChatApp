@@ -16,11 +16,15 @@ def receive(addr, channel):
     s = socket.socket(
         socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM
     )
-    s.connect((addr, channel))
+    s.bind((addr, int(channel)))
+    s.listen(1)
+    print(f"チャンネル{channel}で受信待機中...")
+
     s_sock, address = s.accept()
-    print(f"{addr}からのコネクトを許可")
+    print(f"{address[0]}からのコネクトを許可")
 
     data = s_sock.recv(1024)
 
+    s_sock.close()
     s.close()
     return data
