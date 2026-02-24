@@ -10,13 +10,14 @@ async def run():
     Bluetoothデバイスを検索する
     Return
     ------
-    devices_list: 検索したbluetoothデバイス
+    devices_list: [(address, name), ...] 形式のリスト
     """
     devices = await discover()
-    return devices
+    return [(d.address, d.name or "Unknown") for d in devices]
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     devices = loop.run_until_complete(run())
-    print(devices)
+    for addr, name in devices:
+        print(f"{addr} - {name}")

@@ -6,14 +6,14 @@ def send(addr, message):
     Bluetooth経由でデータを送信する
     Parameters
     ----------
-    addr:bluetooth address
-    message: message 送信したいメッセージ
+    addr: (bluetooth_address, channel) のタプル
+    message: 送信したいメッセージ文字列
     """
     s = socket.socket(
         socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM
     )
-    s.connect(addr)
-
-    s.send(message.encode())
-    data = s.recv(1024).decode()
-    return data
+    try:
+        s.connect(addr)
+        s.send(message.encode())
+    finally:
+        s.close()
