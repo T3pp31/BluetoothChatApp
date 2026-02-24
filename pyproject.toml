@@ -1,16 +1,18 @@
-[tool.poetry]
+[project]
 name = "bluetoothchatapp"
 version = "0.1.0"
 description = ""
-authors = ["Fu-Te <37261985+T3pp31@users.noreply.github.com>"]
+authors = [{name = "Fu-Te", email = "37261985+T3pp31@users.noreply.github.com"}]
 readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pysimplegui>=4.60.4",
+    "bleak>=0.20.1",
+]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-pysimplegui = "^4.60.4"
-bleak = "^0.20.1"
-
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

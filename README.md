@@ -4,28 +4,21 @@ Bluetooth (RFCOMM) を使ってテキストメッセージを送受信するデ�
 
 ## 必要な環境
 
-- Python 3.9 以上
+- Python 3.13 以上
+- [uv](https://docs.astral.sh/uv/) パッケージマネージャ
 - Bluetooth 対応の PC（Linux / macOS / Windows）
 - Linux の場合は BlueZ がインストールされていること
 
 ## インストール
 
-### Poetry を使う場合（推奨）
-
 ```bash
-poetry install
-```
-
-### pip を使う場合
-
-```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ## 起動方法
 
 ```bash
-python main.py
+uv run python main.py
 ```
 
 起動すると「Bluetooth チャット」というタイトルのウィンドウが表示されます。
@@ -90,9 +83,8 @@ python main.py
 ```
 BluetoothChatApp/
 ├── main.py              # アプリケーションのエントリーポイント（GUI）
-├── requirements.txt     # pip 用の依存パッケージ一覧
-├── pyproject.toml       # Poetry 用のプロジェクト設定
-├── poetry.lock          # 依存パッケージのロックファイル
+├── pyproject.toml       # プロジェクト設定（uv）
+├── uv.lock              # 依存パッケージのロックファイル
 └── src/
     ├── search.py        # Bluetooth デバイスの検索
     ├── send.py          # RFCOMM 経由のメッセージ送信
